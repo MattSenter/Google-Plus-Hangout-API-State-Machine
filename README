@@ -1,0 +1,28 @@
+Google+ Hangout API State Machine
+
+This code is provided as-is with no warranty, expressed or implied. Use at your own risk. See the LICENSE file for information on the LGPL license.
+
+SUMMARY:
+This project was created to fill a gap in the Google+ Hangout API when it comes to managing shared state across multiple clients that my join or drop out of a running app in a hangout. The provided class, kungfuters.StateMachinePlus, attempts to manage local state when updates to the shared state occur.
+
+USAGE:
+There are two main thing you'll need to do to use kungfuters.StateMachinePlus:
+
+1) Instantiate the class with a custom setup() method that includes your transition definitions:
+
+	var stateMachine = new kungfuters.StateMachinePlus({
+		setup: function() {
+			this.addTransition("phase1", "phase2");
+			this.addTransition("phase2", "phase3");
+		}
+	});
+
+2) Call the begin() method with your first phase:
+
+	stateMachien.begin("phase1");
+
+I'll be posting updates about this on Google+, and in case you have questions, just circle me.
+
+Find me at http://zipl.us/matt
+
+(Also get your own Google+ vanity URL and RSS Feed at http://zipl.us)
