@@ -6,7 +6,7 @@ SUMMARY:
 This project was created to fill a gap in the Google+ Hangout API when it comes to managing shared state across multiple clients that my join or drop out of a running app in a hangout. The provided class, kungfuters.StateMachinePlus, attempts to manage local state when updates to the shared state occur.
 
 USAGE:
-There are two main thing you'll need to do to use kungfuters.StateMachinePlus:
+There are a few things you'll need to do to use kungfuters.StateMachinePlus:
 
 1) Instantiate the class with a custom setup() method that includes your transition definitions:
 
@@ -19,7 +19,24 @@ There are two main thing you'll need to do to use kungfuters.StateMachinePlus:
 
 2) Call the begin() method with your first phase:
 
-	stateMachien.begin("phase1");
+	stateMachine.begin("phase1");
+
+3) Define your phase methods, which by default look like _phase_yourPhaseName():
+	
+	function _phase_phase1() {
+		...
+	}
+	function _phase_phase2() {
+		...
+	}
+
+4) Also, if you want to scope your methods, just pass a "scope" parameter to the kungfuters.StateMachinePlus() constructor:
+
+	new kungfuters.StateMachinePlus({
+		scope: someObject
+		...
+	});
+	
 
 I'll be posting updates about this on Google+, and in case you have questions, just circle me.
 
